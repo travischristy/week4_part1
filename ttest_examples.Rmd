@@ -8,3 +8,49 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+One Sampe T-Test Instructions: type: ?t.test in the console
+Two sample T Test Instructions: typ
+
+## 1. Confidence intervals
+
+```{r}
+otter_length <- c(34, 41, 50, 27, 32, 41, 48, 60, 43)
+
+t.test(otter_length)
+```
+This is a look at a sample, not the whole population. Therefore there is a measure of uncertainty.
+We're 95% sure that the mean will fall within the confidence interval shown above.
+
+
+
+## T-test (1-sample t-test)
+
+See a claim: mean otter length is 50 inches
+
+```{r}
+otter_test <- t.test(x = otter_length, mu = 50)
+otter_test
+```
+
+P value of .040 means there is a 4.0 % chance that a random sample taken from the total population is at least as different from 50 in either direction as our sample mean.
+
+More often when we do T-tests we are comparing two sample sets. We want to know if the sample means represent that they were drawn from the same population,
+
+## two sample t-test
+
+```{r}
+desert_bighorns <- c(32, 44, 18, 26, 50, 33, 42, 20)
+sierra_bighorns <- c(28, 31, 40, 42, 26, 29, 31)
+
+t.test(x = desert_bighorns, y = sierra_bighorns)
+```
+
+confidence interval 1 is a negative value because of differences (y-x or x-y) in means but not typically reported
+hypothesis is that the true difference in means in not = 0 
+p value in a two sample t-test is the probability that your two samples were drawn from a population with the same mean. In this case that is 88.5%.
+
+
+
+
+

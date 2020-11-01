@@ -369,7 +369,63 @@ summary {
 </div>
 
 
+<p>One Sampe T-Test Instructions: type: ?t.test in the console Two sample T Test Instructions: typ</p>
+<div id="confidence-intervals" class="section level2">
+<h2>1. Confidence intervals</h2>
+<pre class="r"><code>otter_length &lt;- c(34, 41, 50, 27, 32, 41, 48, 60, 43)
 
+t.test(otter_length)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  otter_length
+## t = 12.413, df = 8, p-value = 1.656e-06
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  34.01673 49.53883
+## sample estimates:
+## mean of x 
+##  41.77778</code></pre>
+<p>This is a look at a sample, not the whole population. Therefore there is a measure of uncertainty. We’re 95% sure that the mean will fall within the confidence interval shown above.</p>
+</div>
+<div id="t-test-1-sample-t-test" class="section level2">
+<h2>T-test (1-sample t-test)</h2>
+<p>See a claim: mean otter length is 50 inches</p>
+<pre class="r"><code>otter_test &lt;- t.test(x = otter_length, mu = 50)
+otter_test</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  otter_length
+## t = -2.443, df = 8, p-value = 0.04037
+## alternative hypothesis: true mean is not equal to 50
+## 95 percent confidence interval:
+##  34.01673 49.53883
+## sample estimates:
+## mean of x 
+##  41.77778</code></pre>
+<p>P value of .040 means there is a 4.0 % chance that a random sample taken from the total population is at least as different from 50 in either direction as our sample mean.</p>
+<p>More often when we do T-tests we are comparing two sample sets. We want to know if the sample means represent that they were drawn from the same population,</p>
+</div>
+<div id="two-sample-t-test" class="section level2">
+<h2>two sample t-test</h2>
+<pre class="r"><code>desert_bighorns &lt;- c(32, 44, 18, 26, 50, 33, 42, 20)
+sierra_bighorns &lt;- c(28, 31, 40, 42, 26, 29, 31)
+
+t.test(x = desert_bighorns, y = sierra_bighorns)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  desert_bighorns and sierra_bighorns
+## t = 0.14825, df = 10.913, p-value = 0.8849
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -9.653212 11.046069
+## sample estimates:
+## mean of x mean of y 
+##  33.12500  32.42857</code></pre>
+<p>confidence interval 1 is a negative value because of differences (y-x or x-y) in means but not typically reported hypothesis is that the true difference in means in not = 0 p value in a two sample t-test is the probability that your two samples were drawn from a population with the same mean. In this case that is 88.5%.</p>
+</div>
 
 
 
